@@ -1,2 +1,2 @@
-# info.fndt
+# tech.fndt
 technical writing for open.fndt.xyz
