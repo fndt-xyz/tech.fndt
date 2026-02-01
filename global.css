@@ -122,8 +122,17 @@ a.logo-text {
     font-weight: 700;
     letter-spacing: -0.05em;
     color: #1e293b;
-    margin-bottom: 4px;
+    margin-bottom: 1px;
     padding-bottom: 0;
+}
+
+hr.title-sep {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-top: 0;        
+    margin-bottom: 6px;
+    display: block;
+    width: 100%;
 }
 
 .view-content {
@@ -201,6 +210,10 @@ a.logo-text {
     font-family: monospace;
     display: block;
 }
+
+/* These add the brackets without shifting layout */
+.crumb-line::before { content: "["; margin-right: 0px; }
+.crumb-line::after { content: "]"; margin-left: 0px; }
 
 .breadcrumb a {
     color: #2563eb;
