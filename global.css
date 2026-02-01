@@ -184,12 +184,18 @@ a.logo-text {
 
 /* Footer Logic */
 .footer-inner {
+    display: flex;         /* MUST have this for space-between to work */
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    box-sizing: border-box; /* Prevents padding from breaking width */
 }
 
-/* Ensure the logo-text in footer doesn't get huge */
+/* Ensure footer links match the clean, no-underline style */
+footer a {
+    text-decoration: none !important;
+}
+
 footer .logo-text {
     font-size: 14px !important;
 }
