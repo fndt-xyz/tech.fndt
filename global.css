@@ -181,3 +181,15 @@ a.logo-text {
     background-color: #f8fafc;
     color: #64748b !important;
 }
+
+/* Footer Logic */
+.footer-inner {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Ensure the logo-text in footer doesn't get huge */
+footer .logo-text {
+    font-size: 14px !important;
+}
