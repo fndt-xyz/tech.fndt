@@ -237,6 +237,11 @@ a.logo-text:hover {
     color: #64748b;
 }
 
+/* Option for no bold: Pick and choose */
+.view-content p a.plain-link {
+    font-weight: 400 !important;
+}
+
 /* Layout Grids */
 .grid-two-one {
     display: grid;
