@@ -1,4 +1,4 @@
-/* global.css */
+/* 1. IMPORTS & VARIABLES */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Open+Sans:wght@700;800&display=swap');
 
 :root {
@@ -7,6 +7,7 @@
     --font-lato: 'Lato', sans-serif;
 }
 
+/* 2. BASE RESET */
 body {
     margin: 0;
     background-color: #ffffff;
@@ -15,94 +16,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Shared Layout Containers */
+/* 3. NAVIGATION BAR */
 .nav-ft-container {
-    width: 100%;/* Import fonts to match Next.js site */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Open+Sans:wght@700;800&display=swap');
-
-:root {
-    --font-open-sans: 'Open Sans', sans-serif;
-    --font-inter: 'Inter', sans-serif;
-    --font-lato: 'Lato', sans-serif;
-}
-
-/* 1. THE UNDERLINE FIX */
-/* Targeting the specific anchor class to override browser defaults */
-a.logo-text {
-    text-decoration: none !important;
-    border-bottom: none !important;
-    font-family: var(--font-open-sans);
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: -0.05em;
-    color: #0f172a;
-    text-transform: lowercase;
-}
-
-a.logo-text:hover {
-    text-decoration: none !important;
-}
-
-/* 2. THE 2:1 GRID LOGIC */
-.grid-two-one {
-    display: grid;
-    grid-template-columns: 1fr; /* Stacks on mobile */
-    gap: 2rem;
-    align-items: start;
-}
-
-@media (min-width: 768px) {
-    .grid-two-one {
-        grid-template-columns: 2fr 1fr; /* 2:1 ratio on laptop */
-    }
-}
-
-/* 3. CARD & CONTENT STYLING */
-.view-card {
-    padding: 1.5rem 0.5rem 2rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 1.5rem; /* Matches your Next.js 2xl */
-    background: white;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-
-.view-title {
-    font-family: var(--font-open-sans);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    color: #1e293b;
-    margin: 0;
-}
-
-.view-content {
-    margin-top: 1.5rem;
-    font-family: var(--font-lato);
-    font-size: 14px;
-    line-height: 1.6;
-    color: #334155;
-    text-align: justify;
-}
-
-/* Custom Link Style inside content */
-.view-content a {
-    color: #2563eb;
-    text-decoration: underline;
-}
-
-/* 4. SIDEBAR STYLING */
-.right-col-links {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #f1f5f9;
-    border-radius: 1rem;
-    overflow: hidden;
-    background: white;
-}
-
-/* ... keep other nav-ft-container styles same ... */
+    width: 100%;
     background-color: #ffffff;
-    border-bottom: 1px solid #f8fafc; /* border-slate-50 */
+    border-bottom: 1px solid #f8fafc;
     padding: 1rem 1.5rem;
     box-sizing: border-box;
 }
@@ -113,36 +31,36 @@ a.logo-text:hover {
     display: flex;
 }
 
-/* Navbar specific Logic */
 .nav-inner {
     flex-direction: column;
     align-items: flex-start;
 }
 
+@media (min-width: 640px) {
+    .nav-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* 4. LOGO & BRANDING (No Underlines) */
 .logo-group {
     display: flex;
     align-items: center;
-    gap: 0.75rem; /* gap-3 */
+    gap: 0.75rem;
     text-decoration: none;
-    color: inherit;
 }
 
-.logo-text {
+a.logo-text {
     font-family: var(--font-open-sans);
     font-weight: 800;
     font-size: 1.25rem;
     letter-spacing: -0.05em;
     color: #0f172a;
     text-transform: lowercase;
-    /* This line removes the underline */
-    text-decoration: none; 
+    text-decoration: none !important;
     display: inline-block;
-}
-
-
-.logo-text:hover {
-    text-decoration: none;
-    color: #0f172a;
 }
 
 .logo-img {
@@ -150,17 +68,18 @@ a.logo-text:hover {
     width: auto;
 }
 
+/* 5. NAV LINKS */
 .nav-links-wrap {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2rem; /* gap-x-8 */
+    gap: 2rem;
     margin-top: 1rem;
     font-family: var(--font-open-sans);
     font-size: 14px;
     text-transform: lowercase;
-    letter-spacing: 0.025em; /* tracking-wide */
 }
+
+@media (min-width: 640px) { .nav-links-wrap { margin-top: 0; } }
 
 .nav-link {
     text-decoration: none;
@@ -168,43 +87,33 @@ a.logo-text:hover {
     transition: color 0.2s;
 }
 
-.nav-link:hover {
-    color: #94a3b8; /* text-slate-400 */
-}
+.nav-link:hover { color: #94a3b8; }
 
-/* RESPONSIVE: Laptop View */
-@media (min-width: 640px) {
-    .nav-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .nav-links-wrap {
-        margin-top: 0;
-    }
-}
-
-/* Content Styles to match your view-card */
+/* 6. CONTENT AREA & GRID */
 .view-container {
-    max-width: 1152px; /* 6xl approx */
+    max-width: 1152px;
     margin: 0 auto;
-    padding: 1.5rem 0.5rem; /* px-2 py-6 */
+    padding: 1.5rem 1.5rem;
+}
+
+.grid-two-one {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
 }
 
 @media (min-width: 768px) {
-    .view-container { padding: 1.5rem 1.5rem; }
+    .grid-two-one { grid-template-columns: 2fr 1fr; }
 }
 
+/* 7. CARDS & TYPOGRAPHY */
 .view-card {
-    padding: 1.5rem 0.5rem 2rem; /* pt-6 px-2 pb-8 */
-    border: 1px solid #e2e8f0; /* border-slate-200 */
+    padding: 1.5rem 2rem 2rem;
+    border: 1px solid #e2e8f0;
     border-radius: 1rem;
     background: white;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-
-@media (min-width: 768px) {
-    .view-card { padding-left: 2rem; padding-right: 2rem; }
 }
 
 .view-title {
@@ -213,11 +122,10 @@ a.logo-text:hover {
     font-weight: 700;
     letter-spacing: -0.05em;
     color: #1e293b;
-    margin: 0;
+    margin-bottom: 1.5rem;
 }
 
 .view-content {
-    margin-top: 1.5rem;
     font-family: var(--font-lato);
     font-size: 14px;
     line-height: 1.625;
@@ -225,7 +133,7 @@ a.logo-text:hover {
     text-align: justify;
 }
 
-/* Links within paragraph body */
+/* 8. LINKS INSIDE BODY TEXT */
 .view-content p a {
     color: inherit;
     text-decoration: none;
@@ -233,38 +141,21 @@ a.logo-text:hover {
     transition: color 0.2s ease;
 }
 
-.view-content p a:hover {
-    color: #64748b;
-}
+.view-content p a:hover { color: #64748b; }
 
-/* Option for no bold: Pick and choose */
+/* Utility: Remove bold when needed */
 .view-content p a.plain-link {
     font-weight: 400 !important;
 }
 
-/* Layout Grids */
-.grid-two-one {
-    display: grid;
-    grid-template-columns: 1fr; /* Stacked by default */
-    gap: 2rem;
-    align-items: start;
-}
-
-@media (min-width: 768px) {
-    .grid-two-one {
-        /* 2:1 Ratio: The first column takes 2 fractional units, the second takes 1 */
-        grid-template-columns: 2fr 1fr;
-    }
-}
-
-/* Sidebar Styling */
+/* 9. SIDEBAR (The clean fix) */
 .right-col-links {
     display: flex;
     flex-direction: column;
     border: 1px solid #f1f5f9;
     border-radius: 1rem;
-    overflow: hidden;
     background: white;
+    overflow: hidden;
 }
 
 .right-col-link-h2 {
@@ -273,26 +164,20 @@ a.logo-text:hover {
     font-weight: bold;
     color: #94a3b8;
     text-transform: lowercase;
-    letter-spacing: 0.1em;
     padding: 1.5rem 1rem 0.5rem;
-    margin: 0;
 }
 
 .right-col-links a {
     padding: 1rem;
     font-family: var(--font-inter);
     font-size: 14px;
-    text-decoration: none;
-    color: #475569;
+    text-decoration: none !important; /* Forces removal of blue underline */
+    color: #475569 !important;      /* Forces clean grey color */
     border-bottom: 1px solid #f8fafc;
     text-transform: lowercase;
-    transition: background 0.2s;
 }
 
 .right-col-links a:hover {
     background-color: #f8fafc;
-}
-
-.right-col-links a:last-child {
-    border-bottom: none;
+    color: #64748b !important;
 }
