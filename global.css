@@ -44,13 +44,23 @@ body {
     color: inherit;
 }
 
+/* Update this section in your global.css */
 .logo-text {
     font-family: var(--font-open-sans);
     font-weight: 800;
-    font-size: 1.25rem; /* text-xl */
-    letter-spacing: -0.05em; /* tracking-tighter */
-    color: #0f172a; /* text-slate-900 */
+    font-size: 1.25rem;
+    letter-spacing: -0.05em;
+    color: #0f172a;
     text-transform: lowercase;
+    /* This line removes the underline */
+    text-decoration: none; 
+    display: inline-block;
+}
+
+/* Ensure it stays clean on hover too */
+.logo-text:hover {
+    text-decoration: none;
+    color: #0f172a; /* Keeps the color solid */
 }
 
 .logo-img {
