@@ -191,6 +191,28 @@ a.logo-text {
     box-sizing: border-box; /* Prevents padding from breaking width */
 }
 
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 20px;
+    font-family: monospace; /* Gives it a technical/dev feel */
+}
+
+.breadcrumb a {
+    color: #2563eb; /* Matches your accent color */
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .current {
+    color: #999;
+    font-weight: normal;
+}
+
 /* Ensure footer links match the clean, no-underline style */
 footer a {
     text-decoration: none !important;
