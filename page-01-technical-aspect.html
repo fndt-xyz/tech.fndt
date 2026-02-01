@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tech.fndt.xyz | home</title>
+    <title>tech.fndt.xyz | technical aspect</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
     
@@ -18,21 +18,18 @@
             
             <div class="left-col">
                 <section class="view-card">
-                    <h1 class="view-title">technical aspect & framework</h1>
+                    <h1 class="view-title">technical aspect</h1>
                     <div class="view-content">
-						<p>
-							welcome to the <a href="https://open.fndt.xyz" target="_blank" rel="noopener noreferrer" style="font-weight: 400;">open.fndt.xyz</a> technical documentation. this site provides detailed specifications, system configurations, and promotional resources.
-						</p>
-                      
-							<div class="my-6 border border-slate-100 rounded-lg overflow-hidden">
-                            </div>
+                        <p>
+                            lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
                     </div>
                 </section>
             </div>
 
             <div class="right-col">
                 <div id="sidebar-placeholder">
-                    </div>
+                </div>
             </div>
 
         </div>
@@ -45,7 +42,6 @@
             const element = document.getElementById(id);
             if (!element) return;
             
-            // Only load if the element is empty (allows for manual overrides)
             if (element.innerHTML.trim() === "") {
                 try {
                     const response = await fetch(file);
@@ -59,7 +55,6 @@
             }
         }
 
-        // Initialize components
         document.addEventListener("DOMContentLoaded", () => {
             loadComponent('navbar-placeholder', 'navbar.html');
             loadComponent('footer-placeholder', 'footer.html');
