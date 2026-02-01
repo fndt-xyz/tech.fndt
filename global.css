@@ -17,7 +17,90 @@ body {
 
 /* Shared Layout Containers */
 .nav-ft-container {
-    width: 100%;
+    width: 100%;/* Import fonts to match Next.js site */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Open+Sans:wght@700;800&display=swap');
+
+:root {
+    --font-open-sans: 'Open Sans', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+}
+
+/* 1. THE UNDERLINE FIX */
+/* Targeting the specific anchor class to override browser defaults */
+a.logo-text {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    font-family: var(--font-open-sans);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.05em;
+    color: #0f172a;
+    text-transform: lowercase;
+}
+
+a.logo-text:hover {
+    text-decoration: none !important;
+}
+
+/* 2. THE 2:1 GRID LOGIC */
+.grid-two-one {
+    display: grid;
+    grid-template-columns: 1fr; /* Stacks on mobile */
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .grid-two-one {
+        grid-template-columns: 2fr 1fr; /* 2:1 ratio on laptop */
+    }
+}
+
+/* 3. CARD & CONTENT STYLING */
+.view-card {
+    padding: 1.5rem 0.5rem 2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem; /* Matches your Next.js 2xl */
+    background: white;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.view-title {
+    font-family: var(--font-open-sans);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: #1e293b;
+    margin: 0;
+}
+
+.view-content {
+    margin-top: 1.5rem;
+    font-family: var(--font-lato);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #334155;
+    text-align: justify;
+}
+
+/* Custom Link Style inside content */
+.view-content a {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* 4. SIDEBAR STYLING */
+.right-col-links {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f1f5f9;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: white;
+}
+
+/* ... keep other nav-ft-container styles same ... */
     background-color: #ffffff;
     border-bottom: 1px solid #f8fafc; /* border-slate-50 */
     padding: 1rem 1.5rem;
@@ -44,7 +127,6 @@ body {
     color: inherit;
 }
 
-/* Update this section in your global.css */
 .logo-text {
     font-family: var(--font-open-sans);
     font-weight: 800;
@@ -57,10 +139,10 @@ body {
     display: inline-block;
 }
 
-/* Ensure it stays clean on hover too */
+
 .logo-text:hover {
     text-decoration: none;
-    color: #0f172a; /* Keeps the color solid */
+    color: #0f172a;
 }
 
 .logo-img {
