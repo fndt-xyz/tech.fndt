@@ -44,7 +44,7 @@ body {
     }
 }
 
-/* 4. LOGO & BRANDING (No Underlines) */
+/* 4. LOGO & BRANDING */
 .logo-group {
     display: flex;
     align-items: center;
@@ -79,7 +79,9 @@ a.logo-text {
     text-transform: lowercase;
 }
 
-@media (min-width: 640px) { .nav-links-wrap { margin-top: 0; } }
+@media (min-width: 640px) { 
+    .nav-links-wrap { margin-top: 0; } 
+}
 
 .nav-link {
     text-decoration: none;
@@ -109,7 +111,7 @@ a.logo-text {
 
 /* 7. CARDS & TYPOGRAPHY */
 .view-card {
-    padding: 1.5rem 2rem 2rem;
+    padding: 1.5rem 2rem 2rem; /* Desktop Padding */
     border: 1px solid #e2e8f0;
     border-radius: 1rem;
     background: white;
@@ -153,12 +155,11 @@ hr.title-sep {
 
 .view-content p a:hover { color: #64748b; }
 
-/* Utility: Remove bold when needed */
 .view-content p a.plain-link {
     font-weight: 400 !important;
 }
 
-/* 9. SIDEBAR (The clean fix) */
+/* 9. SIDEBAR */
 .right-col-links {
     display: flex;
     flex-direction: column;
@@ -181,8 +182,8 @@ hr.title-sep {
     padding: 1rem;
     font-family: var(--font-inter);
     font-size: 14px;
-    text-decoration: none !important; /* Forces removal of blue underline */
-    color: #475569 !important;      /* Forces clean grey color */
+    text-decoration: none !important;
+    color: #475569 !important;      
     border-bottom: 1px solid #f8fafc;
     text-transform: lowercase;
 }
@@ -192,15 +193,39 @@ hr.title-sep {
     color: #64748b !important;
 }
 
-/* Footer Logic */
+/* 10. MOBILE ALIGNMENT FIXES */
+@media (max-width: 767px) {
+    /* Reduce the 'useless space' on the left of the card */
+    .view-card {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    /* Match the sidebar links exactly to the card text above */
+    .right-col-links a {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* Match the sidebar header */
+    .right-col-link-h2 {
+        padding-left: 1.25rem;
+    }
+
+    /* Adjust main container to give more screen real estate */
+    .view-container {
+        padding: 1rem;
+    }
+}
+
+/* 11. FOOTER & BREADCRUMBS */
 .footer-inner {
-    display: flex;         /* MUST have this for space-between to work */
+    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    box-sizing: border-box; /* Prevents padding from breaking width */
+    box-sizing: border-box;
 }
-
 
 .breadcrumb {
     font-size: 10px;
@@ -211,7 +236,6 @@ hr.title-sep {
     display: block;
 }
 
-/* These add the brackets without shifting layout */
 .crumb-line::before { content: "["; margin-right: 0px; }
 .crumb-line::after { content: "]"; margin-left: 0px; }
 
@@ -220,15 +244,29 @@ hr.title-sep {
     text-decoration: none;
 }
 
-.breadcrumb a:hover {
-    text-decoration: none;
-}
-
 .breadcrumb .current {
     color: #999;
     font-weight: normal;
 }
-/* Ensure footer links match the clean, no-underline style */
+
+/* Removes the heavy default indent and aligns bullets with the paragraph text */
+.list-flush {
+    padding-left: 1.25rem; /* Aligns the bullet point with the start of the text */
+    margin-left: 0;
+    list-style-position: outside;
+}
+
+.list-flush li {
+    /*margin-bottom: 0.5rem;  Adds a little breathing room between items */
+}
+
+/* Optional: Specifically for mobile to ensure it doesn't drift */
+@media (max-width: 767px) {
+    .list-flush {
+        padding-left: 1rem; 
+    }
+}
+
 footer a {
     text-decoration: none !important;
 }
