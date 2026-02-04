@@ -26,7 +26,7 @@
 }
 
 /* Mobile: ensures they take up more space if needed, or stay centered */
-@media (max-width: 400px) {
+@media (max-width: 300px) {
     .img-col {
         flex: 0 1 100%;
         display: flex;
