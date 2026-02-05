@@ -38,14 +38,14 @@
                             this diagram explains the secure tunneling architecture between the client-side ERP and the open.fndt.xyz office hub.
                         </p>
     <pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333);">
-    __________________________________________________________________________
+        __________________________________________________________________________
     |                                                                          |
     | [external] remote access                                                 |
     |      (client employee @ home)                                            |
     |__________________________________________________________________________|
                     |
                     | [requests ERP web UI]
-    _______________v__________________________________________________________
+        _______________v__________________________________________________________
     |                                                                          |
     | [office_hq] open.fndt.xyz office - static public IP                      |
     |    __________________________          ______________________________    |
@@ -56,7 +56,7 @@
                                                     |
                 [handshake/bridge] <----------------+ [secure tunnel]
                                                     |
-    _____________________________________________v____________________________
+        _____________________________________________v____________________________
     |                                                                          |
     | [client_site] client premise - local LAN                                 |
     |    __________________________          ______________________________    |
@@ -71,6 +71,36 @@
     |                                           [user] local employee devices  |
     |__________________________________________________________________________|
     </pre>
+                    <p>mermaid source code (for diagrams.net import):</p>
+    
+    <pre style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace;"><code>graph TD
+    subgraph Office_HQ [open.fndt.xyz office - static public IP]
+        TS[tunneling server<br/>xubuntu 24.04]
+        Dev[admin / maintenance PC]
+    end
+
+    subgraph client_site [client premise - local LAN]
+        ERP[ERP server mini-PC<br/>xubuntu / 16GB RAM / docker]
+        User[local employee devices]
+        Router[client router<br/>no port forwarding req.]
+    end
+
+    subgraph External [remote access]
+        RemoteUser[client employee @ home]
+    end
+
+    %% Flow logic
+    User -- local LAN access --> ERP
+    ERP -- initiates outbound tunnel --> TS
+    TS -- handshake/bridge --> ERP
+
+    %% Admin logic
+    Dev -- remote maintenance --> TS
+    TS -- secure tunnel --> ERP
+
+    %% Remote user logic
+    RemoteUser -- requests ERP web UI --> TS
+    TS -- routes traffic --> ERP</code></pre>
                     </div>
                 </section>
             </div>
