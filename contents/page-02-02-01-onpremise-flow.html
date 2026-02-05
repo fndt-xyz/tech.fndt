@@ -38,32 +38,32 @@
                             this diagram explains the secure tunneling architecture between the client-side ERP and the open.fndt.xyz office hub.
                         </p>
 <pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333); white-space: pre;">
-             [ REMOTE USER ]
-                    |
-                    v (public static ip)
-  .----------------------------------------------------.
-  | open.fndt.xyz office                               |
-  |   ________________        ________________         |
-  |  | [dev]          |      | [TS]           |        |
-  |  | admin PC       | <--> | tunnel server  |        |
-  |  |________________|      |________________|        |
-  '---------------------------^----------|-------------'
-                              |          |
-               [REVERSE TUNNEL]  [SECURE BRIDGE]
-                              |          |
-  .---------------------------|----------v-------------.
-  | client_site               |          |             |
-  |   ________________        |  ________________      |
-  |  | [router]       |       | | [ERP]          |     |
-  |  | no port fwd    |-------' | mini-PC (16GB) |     |
-  |  |________________|         | (docker stack) |     |
-  |        |                    |________________|     |
-  |        |                            ^              |
-  |        |      [local lan access]    |              |
-  |        '----------------------------'              |
-  |                                                    |
-  | [user] employee devices                            |
-  '----------------------------------------------------'
+            [ REMOTE USER ]
+                   |
+                   v (public static ip)
+ .----------------------------------------------------.
+ | open.fndt.xyz office                               |
+ |   ________________        ________________         |
+ |  | [dev]          |      | [TS]           |        |
+ |  | admin PC       | <--> | tunnel server  |        |
+ |  |________________|      |________________|        |
+ '---------------------------^----------|-------------'
+                             |          |
+              [REVERSE TUNNEL]  [SECURE BRIDGE]
+                             |          |
+ .---------------------------|----------v-------------.
+ | client_site               |          |             |
+ |   ________________        |  ________________      |
+ |  | [router]       |       | | [ERP]          |     |
+ |  | no port fwd    |-------' | mini-PC (16GB) |     |
+ |  |________________|         | (docker stack) |     |
+ |        |                    |________________|     |
+ |        |                            ^              |
+ |        |      [local lan access]    |              |
+ |        '----------------------------'              |
+ |                                                    |
+ | [user] employee devices                            |
+ '----------------------------------------------------'
 </pre>
                     </div>
                     
