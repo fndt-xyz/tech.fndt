@@ -37,73 +37,67 @@
                         <p>
                             this diagram explains the secure tunneling architecture between the client-side ERP and the open.fndt.xyz office hub.
                         </p>
-    <pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333);">
-     __________________________________________________________________________
-    |                                                                          |
-    | [external] remote access                                                 |
-    |      (client employee @ home)                                            |
-    |__________________________________________________________________________|
-                    |
-                    | [requests ERP web UI]
-     _______________v__________________________________________________________
-    |                                                                          |
-    | [office_hq] open.fndt.xyz office - static public IP                      |
-    |    __________________________          ______________________________    |
-    |   | [dev]                    |        | [TS]                         |   |
-    |   | admin / maintenance PC   | -----> | tunneling server             |   |
-    |   |__________________________|        | (xubuntu 24.04)              |   |
-    |_____________________________________________^____________________________|
-                                                  |
-              [handshake/bridge] <----------------+ [secure tunnel]
-                                                  |
-     _____________________________________________v____________________________
-    |                                                                          |
-    | [client_site] client premise - local LAN                                 |
-    |    __________________________          ______________________________    |
-    |   | [router]                 |        | [ERP]                        |   |
-    |   | client router            | <----- | ERP server mini-PC           |   |
-    |   | (no port forwarding req) |        | (xubuntu / 16GB RAM / docker)|   |
-    |   |__________________________|        |______________________________|   |
-    |                |                                    ^                    |
-    |                |                                    | [local LAN access] |
-    |                +------------------------------------+                    |
-    |                                                     |                    |
-    |                                           [user] local employee devices  |
-    |__________________________________________________________________________|
-    </pre>
+<pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333); white-space: pre;">
+                [ REMOTE USER ]
+                       |
+                       v (public static ip)
+     .----------------------------------------------------.
+     | open.fndt.xyz office                               |
+     |   ________________        ________________         |
+     |  | [dev]          |      | [TS]           |        |
+     |  | admin PC       | <--> | tunnel server  |        |
+     |  |________________|      |________________|        |
+     '---------------------------^----------|-------------'
+                                 |          |
+                  [REVERSE TUNNEL]  [SECURE BRIDGE]
+                                 |          |
+     .---------------------------|----------v-------------.
+     | client_site               |          |             |
+     |   ________________        |  ________________      |
+     |  | [router]       |       | | [ERP]          |     |
+     |  | no port fwd    |-------' | mini-PC (16GB) |     |
+     |  |________________|         | (docker stack) |     |
+     |        |                    |________________|     |
+     |        |                            ^              |
+     |        |      [local lan access]    |              |
+     |        '----------------------------'              |
+     |                                                    |
+     | [user] employee devices                            |
+     '----------------------------------------------------'
+</pre>
                     </div>
                     
                     <div class="view-content">
 						<p>mermaid source code (optimized for diagrams.net):</p>
     
-    <pre style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; white-space: pre-wrap;"><code>graph TD
-    subgraph Office_HQ [open.fndt.xyz office - static public IP]
-        TS["tunneling server (xubuntu 24.04)"]
-        Dev["admin / maintenance PC"]
+    <pre style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; white-space: pre-wrap;">
+		<code>
+graph TD
+    subgraph Office_HQ ["open.fndt.xyz office"]
+        TS["[TS] tunnel server"]
+        Dev["[dev] admin PC"]
     end
 
-    subgraph client_site [client premise - local LAN]
-        ERP["ERP server mini-PC (xubuntu / 16GB RAM / docker)"]
-        User["local employee devices"]
-        Router["client router (no port forwarding req.)"]
+    subgraph client_site ["client_site"]
+        Router["[router] no port fwd"]
+        ERP["[ERP] mini-PC (16GB)"]
+        User["[user] employee devices"]
     end
 
-    subgraph External [remote access]
-        RemoteUser["client employee @ home"]
-    end
+    RemoteUser["[ REMOTE USER ]"]
 
     %% Flow logic
-    User -- "local LAN access" --> ERP
-    ERP -- "initiates outbound tunnel" --> TS
-    TS -- "handshake/bridge" --> ERP
+    RemoteUser -- "public static ip" --> TS
+    Dev <--> TS
 
-    %% Admin logic
-    Dev -- "remote maintenance" --> TS
-    TS -- "secure tunnel" --> ERP
-
-    %% Remote user logic
-    RemoteUser -- "requests ERP web UI" --> TS
-    TS -- "routes traffic" --> ERP</code></pre>
+    %% The Tunnel Logic
+    ERP -. "REVERSE TUNNEL" .-> TS
+    TS == "SECURE BRIDGE" ==> ERP
+    
+    Router --- ERP
+    User -- "local lan access" --> ERP
+		</code>
+	</pre>
 				</div>
                     
                 </section>

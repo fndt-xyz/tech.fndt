@@ -1,0 +1,35 @@
+<mxfile host="app.diagrams.net" modified="2024-05-20T00:00:00.000Z" agent="Gemini" version="21.0.0" type="device">
+  <diagram id="open_fndt_flow" name="on-premise flow">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="office_group" value="open.fndt.xyz office (static ip)" style="swimlane;whiteSpace=wrap;html=1;dashed=1;dashPattern=1 4;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_node" value="&lt;b&gt;TS&lt;/b&gt;&lt;br&gt;tunneling server&lt;br&gt;(xubuntu 24.04)" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#008a00;shape=mxgraph.azure.computer;pointerEvents=1;fontColor=#ffffff;" vertex="1" parent="office_group">
+          <mxGeometry x="85" y="40" width="70" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_group" value="client premise (local lan)" style="swimlane;whiteSpace=wrap;html=1;dashed=1;dashPattern=1 4;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="520" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="erp_node" value="&lt;b&gt;ERP&lt;/b&gt;&lt;br&gt;mini-PC (16GB)&lt;br&gt;(docker stack)" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#1ba1e2;shape=mxgraph.azure.server;pointerEvents=1;fontColor=#ffffff;" vertex="1" parent="client_group">
+          <mxGeometry x="85" y="40" width="70" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="user_node" value="remote employee&lt;br&gt;(external access)" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#e3c800;shape=mxgraph.azure.laptop;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="40" width="70" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link1" value="requests ERP UI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="user_node" target="office_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link2" value="reverse tunnel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#FF0000;strokeWidth=3;" edge="1" parent="1" source="client_group" target="office_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
