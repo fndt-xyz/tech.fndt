@@ -71,37 +71,41 @@
     |                                           [user] local employee devices  |
     |__________________________________________________________________________|
     </pre>
-                    <p>mermaid source code (for diagrams.net import):</p>
+                    </div>
+                    
+                    <div class="view-content">
+						<p>mermaid source code (optimized for diagrams.net):</p>
     
-    <pre style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace;"><code>graph TD
+    <pre style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; white-space: pre-wrap;"><code>graph TD
     subgraph Office_HQ [open.fndt.xyz office - static public IP]
-        TS[tunneling server<br/>xubuntu 24.04]
-        Dev[admin / maintenance PC]
+        TS["tunneling server (xubuntu 24.04)"]
+        Dev["admin / maintenance PC"]
     end
 
     subgraph client_site [client premise - local LAN]
-        ERP[ERP server mini-PC<br/>xubuntu / 16GB RAM / docker]
-        User[local employee devices]
-        Router[client router<br/>no port forwarding req.]
+        ERP["ERP server mini-PC (xubuntu / 16GB RAM / docker)"]
+        User["local employee devices"]
+        Router["client router (no port forwarding req.)"]
     end
 
     subgraph External [remote access]
-        RemoteUser[client employee @ home]
+        RemoteUser["client employee @ home"]
     end
 
     %% Flow logic
-    User -- local LAN access --> ERP
-    ERP -- initiates outbound tunnel --> TS
-    TS -- handshake/bridge --> ERP
+    User -- "local LAN access" --> ERP
+    ERP -- "initiates outbound tunnel" --> TS
+    TS -- "handshake/bridge" --> ERP
 
     %% Admin logic
-    Dev -- remote maintenance --> TS
-    TS -- secure tunnel --> ERP
+    Dev -- "remote maintenance" --> TS
+    TS -- "secure tunnel" --> ERP
 
     %% Remote user logic
-    RemoteUser -- requests ERP web UI --> TS
-    TS -- routes traffic --> ERP</code></pre>
-                    </div>
+    RemoteUser -- "requests ERP web UI" --> TS
+    TS -- "routes traffic" --> ERP</code></pre>
+				</div>
+                    
                 </section>
             </div>
 
