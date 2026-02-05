@@ -37,40 +37,40 @@
                         <p>
                             this diagram explains the secure tunneling architecture between the client-side ERP and the open.fndt.xyz office hub.
                         </p>
-                            <pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333);">
-                                __________________________________________________________________________
-                            |                                                                          |
-                            | [external] remote access                                                 |
-                            |      (client employee @ home)                                            |
-                            |__________________________________________________________________________|
-                                            |
-                                            | [requests ERP web UI]
-                                _______________v__________________________________________________________
-                            |                                                                          |
-                            | [office_hq] open.fndt.xyz office - static public IP                      |
-                            |    __________________________          ______________________________    |
-                            |   | [dev]                    |        | [TS]                         |   |
-                            |   | admin / maintenance PC   | -----> | tunneling server             |   |
-                            |   |__________________________|        | (xubuntu 24.04)              |   |
-                            |_____________________________________________^____________________________|
-                                                                            |
-                                        [handshake/bridge] <----------------+ [secure tunnel]
-                                                                            |
-                                _____________________________________________v____________________________
-                            |                                                                          |
-                            | [client_site] client premise - local LAN                                 |
-                            |    __________________________          ______________________________    |
-                            |   | [router]                 |        | [ERP]                        |   |
-                            |   | client router            | <----- | ERP server mini-PC           |   |
-                            |   | (no port forwarding req) |        | (xubuntu / 16GB RAM / docker)|   |
-                            |   |__________________________|        |______________________________|   |
-                            |                |                                    ^                    |
-                            |                |                                    | [local LAN access] |
-                            |                +------------------------------------+                    |
-                            |                                                     |                    |
-                            |                                           [user] local employee devices  |
-                            |__________________________________________________________________________|
-                            </pre>
+    <pre style="line-height: 1.2; font-size: 0.85rem; color: var(--text-color, #333);">
+        __________________________________________________________________________
+    |                                                                          |
+    | [external] remote access                                                 |
+    |      (client employee @ home)                                            |
+    |__________________________________________________________________________|
+                    |
+                    | [requests ERP web UI]
+        _______________v__________________________________________________________
+    |                                                                          |
+    | [office_hq] open.fndt.xyz office - static public IP                      |
+    |    __________________________          ______________________________    |
+    |   | [dev]                    |        | [TS]                         |   |
+    |   | admin / maintenance PC   | -----> | tunneling server             |   |
+    |   |__________________________|        | (xubuntu 24.04)              |   |
+    |_____________________________________________^____________________________|
+                                                    |
+                [handshake/bridge] <----------------+ [secure tunnel]
+                                                    |
+        _____________________________________________v____________________________
+    |                                                                          |
+    | [client_site] client premise - local LAN                                 |
+    |    __________________________          ______________________________    |
+    |   | [router]                 |        | [ERP]                        |   |
+    |   | client router            | <----- | ERP server mini-PC           |   |
+    |   | (no port forwarding req) |        | (xubuntu / 16GB RAM / docker)|   |
+    |   |__________________________|        |______________________________|   |
+    |                |                                    ^                    |
+    |                |                                    | [local LAN access] |
+    |                +------------------------------------+                    |
+    |                                                     |                    |
+    |                                           [user] local employee devices  |
+    |__________________________________________________________________________|
+    </pre>
                     </div>
                 </section>
             </div>
